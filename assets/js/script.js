@@ -29,26 +29,18 @@ CSS TABLE OF CONTENTS
 15. Custom cursor
 
 ------------------------------------------------------------------*/
-jQuery(document).ready(function ($) {
-
-	if (sessionStorage.getItem('advertOnce') !== 'true') {
-		//sessionStorage.setItem('advertOnce','true');
-		$('.box').show();
-	} else {
-		$('.box').hide();
-	}
-
-	$('#refresh-page').on('click', function () {
-		$('.box').hide();
-		sessionStorage.setItem('advertOnce', 'true');
-	});
-
-	$('#reset-session').on('click', function () {
-		$('.box').show();
-		sessionStorage.setItem('advertOnce', '');
-	});
-
+$('[data-fancybox]').fancybox({
+	// Options will go here
+	buttons: [
+		'close'
+	],
+	wheel: false,
+	transitionEffect: "slide",
+	loop: true,
+	toolbar: false,
+	clickContent: false
 });
+
 (function ($) {
 	("use strict");
 
