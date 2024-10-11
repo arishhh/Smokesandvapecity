@@ -29,7 +29,26 @@ CSS TABLE OF CONTENTS
 15. Custom cursor
 
 ------------------------------------------------------------------*/
+jQuery(document).ready(function ($) {
 
+	if (sessionStorage.getItem('advertOnce') !== 'true') {
+		//sessionStorage.setItem('advertOnce','true');
+		$('.box').show();
+	} else {
+		$('.box').hide();
+	}
+
+	$('#refresh-page').on('click', function () {
+		$('.box').hide();
+		sessionStorage.setItem('advertOnce', 'true');
+	});
+
+	$('#reset-session').on('click', function () {
+		$('.box').show();
+		sessionStorage.setItem('advertOnce', '');
+	});
+
+});
 (function ($) {
 	("use strict");
 
@@ -64,18 +83,6 @@ CSS TABLE OF CONTENTS
 		}
 	});
 
-	// Preloader area start here ***
-	paceOptions = {
-		ajax: true,
-		document: true,
-		eventLag: false,
-	};
-
-	Pace.on("done", function () {
-		$("#preloader").addClass("isdone");
-		$(".loading").addClass("isdone");
-	});
-	// Preloader area end here ***
 
 	// Banner five slider area end here ***
 	var sliderActive3 = ".banner-two__slider";
@@ -344,7 +351,6 @@ CSS TABLE OF CONTENTS
 		type: "iframe",
 		mainClass: "mfp-fade",
 		removalDelay: 160,
-		preloader: false,
 		fixedContentPos: false,
 	});
 	// Map popup area end here ***
@@ -491,7 +497,7 @@ CSS TABLE OF CONTENTS
 				$("body").on("mouseleave", "a, .cursor-pointer", function () {
 					($(this).is("a") && $(this).closest(".cursor-pointer").length) ||
 						(e.classList.remove("cursor-hover"),
-						t.classList.remove("cursor-hover"));
+							t.classList.remove("cursor-hover"));
 				}),
 				(e.style.visibility = "visible"),
 				(t.style.visibility = "visible");
