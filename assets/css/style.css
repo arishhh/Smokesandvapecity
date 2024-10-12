@@ -2704,7 +2704,7 @@ a.main__logo img {
   position: absolute;
   top: 0 !important;
   left: 0;
-  /* background-color: #191919; */
+  background-color: #191919;
 }
 
 @media (max-width: 1199px) {
@@ -3224,6 +3224,7 @@ a.main__logo img {
 .banner-two {
   overflow: hidden;
   position: relative;
+  margin-top: 78px;
 }
 
 .banner-two__shape-left {
