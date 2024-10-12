@@ -29,6 +29,7 @@ CSS TABLE OF CONTENTS
 15. Custom cursor
 
 ------------------------------------------------------------------*/
+
 $('[data-fancybox]').fancybox({
 	// Options will go here
 	buttons: [
@@ -83,10 +84,10 @@ $('[data-fancybox]').fancybox({
 		slidesPerView: 1,
 		effect: "fade",
 		speed: 3000,
-		autoplay: {
-			delay: 7000,
-			disableOnInteraction: false,
-		},
+		// autoplay: {
+		// 	delay: 7000,
+		// 	disableOnInteraction: false,
+		// },
 		navigation: {
 			nextEl: ".banner-two__arry-next",
 			prevEl: ".banner-two__arry-prev",
@@ -468,37 +469,62 @@ $('[data-fancybox]').fancybox({
 
 	// Mouse cursor area start here ***
 	function mousecursor() {
-		if ($("body")) {
+		// Check if the screen width is 992px or greater
+		if ($(window).width() >= 992 && $("body").length) {
 			const e = document.querySelector(".cursor-inner"),
 				t = document.querySelector(".cursor-outer");
-			let n,
-				i = 0,
-				o = !1;
-			(window.onmousemove = function (s) {
-				o ||
-					(t.style.transform =
-						"translate(" + s.clientX + "px, " + s.clientY + "px)"),
-					(e.style.transform =
-						"translate(" + s.clientX + "px, " + s.clientY + "px)"),
-					(n = s.clientY),
-					(i = s.clientX);
-			}),
-				$("body").on("mouseenter", "a, .cursor-pointer", function () {
-					e.classList.add("cursor-hover"), t.classList.add("cursor-hover");
-				}),
-				$("body").on("mouseleave", "a, .cursor-pointer", function () {
-					($(this).is("a") && $(this).closest(".cursor-pointer").length) ||
-						(e.classList.remove("cursor-hover"),
-							t.classList.remove("cursor-hover"));
-				}),
-				(e.style.visibility = "visible"),
-				(t.style.visibility = "visible");
+			let n, i = 0, o = false;
+
+			// Mouse move event to update cursor position
+			window.onmousemove = function (s) {
+				if (!o) {
+					t.style.transform = "translate(" + s.clientX + "px, " + s.clientY + "px)";
+				}
+				e.style.transform = "translate(" + s.clientX + "px, " + s.clientY + "px)";
+				n = s.clientY;
+				i = s.clientX;
+			};
+
+			// Add hover effects on links and elements with .cursor-pointer class
+			$("body").on("mouseenter", "a, .cursor-pointer", function () {
+				e.classList.add("cursor-hover");
+				t.classList.add("cursor-hover");
+			});
+
+			$("body").on("mouseleave", "a, .cursor-pointer", function () {
+				if (!($(this).is("a") && $(this).closest(".cursor-pointer").length)) {
+					e.classList.remove("cursor-hover");
+					t.classList.remove("cursor-hover");
+				}
+			});
+
+			// Make cursor elements visible
+			e.style.visibility = "visible";
+			t.style.visibility = "visible";
+		} else {
+			// If screen width is less than 992px, hide cursor elements
+			const e = document.querySelector(".cursor-inner"),
+				t = document.querySelector(".cursor-outer");
+			if (e) e.style.visibility = "hidden";
+			if (t) t.style.visibility = "hidden";
+
+			// Remove any existing event handlers to prevent unwanted behavior
+			$("body").off("mouseenter", "a, .cursor-pointer");
+			$("body").off("mouseleave", "a, .cursor-pointer");
+			window.onmousemove = null;
 		}
 	}
 
 	$(function () {
+		// Initialize cursor functionality on document ready
 		mousecursor();
+
+		// Re-run the mousecursor function on window resize to handle dynamic changes
+		$(window).resize(function () {
+			mousecursor();
+		});
 	});
+	
 	// Mouse cursor area end here ***
 
 	// Nice seclect area start here ***
