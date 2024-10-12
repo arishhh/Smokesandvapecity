@@ -82,12 +82,12 @@ $('[data-fancybox]').fancybox({
 	var sliderInit3 = new Swiper(sliderActive3, {
 		loop: true,
 		slidesPerView: 1,
-		effect: "fade",
-		speed: 3000,
-		// autoplay: {
-		// 	delay: 7000,
-		// 	disableOnInteraction: false,
-		// },
+		effect: "slide",
+		speed: 1500,
+		autoplay: {
+			delay: 7000,
+			disableOnInteraction: false,
+		},
 		navigation: {
 			nextEl: ".banner-two__arry-next",
 			prevEl: ".banner-two__arry-prev",
@@ -524,7 +524,7 @@ $('[data-fancybox]').fancybox({
 			mousecursor();
 		});
 	});
-	
+
 	// Mouse cursor area end here ***
 
 	// Nice seclect area start here ***
