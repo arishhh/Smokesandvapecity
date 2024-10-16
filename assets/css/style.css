@@ -4820,7 +4820,7 @@ a.main__logo img {
 
 .contact .content {
   color: var(--white);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../assets/images/contact/01.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../assets/images/gallery/Store-front.jpeg);
   padding: 40px 30px;
 }
 
