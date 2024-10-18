@@ -2694,7 +2694,7 @@ a.main__logo img {
   background-color: var(--primary-color);
 }
 
-.image{
+.mapimage{
   height: 281px;
 }
 
@@ -4552,15 +4552,16 @@ a.main__logo img {
 
 .gallery__image {
   position: relative;
+  height: 281px;
 }
 
 /* .swiper-slide-active .gallery__image img{
   transform: scale(1.05);
 } */
 
-/* .gallery__image img {
+ .gallery__image img {
   border-radius: 10px;
-} */
+} 
 
 /* .gallery__image::before {
   background: linear-gradient(180deg, rgba(26, 26, 26, 0) 0%, #1a1a1a 100%);
